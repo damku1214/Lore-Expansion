@@ -154,7 +154,7 @@ public class LEEvents {
         assert attacker != null;
         LivingEntity target = event.getEntity();
 
-        int enchantLevel = stack.getEnchantmentLevel(attacker.level().holderOrThrow(LEEnchants.BUSY_BEE));
+        int enchantLevel = stack.getEnchantmentLevel(attacker.level().holderOrThrow(LEEnchants.LEECHING));
 
         if (enchantLevel > 0) {
             attacker.heal(target.getMaxHealth() * (0.03f + 0.02f * enchantLevel));
