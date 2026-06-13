@@ -1,0 +1,47 @@
+{
+  "ambush_0": {
+    "subtitle": "sounds.loreexpansion.ambush",
+    "sounds": [
+      "loreexpansion:enchant/ambush/ambush_0_0",
+      "loreexpansion:enchant/ambush/ambush_0_1",
+      "loreexpansion:enchant/ambush/ambush_0_2"
+    ]
+  },
+  "ambush_1": {
+    "subtitle": "sounds.loreexpansion.ambush",
+    "sounds": [
+      "loreexpansion:enchant/ambush/ambush_1_0",
+      "loreexpansion:enchant/ambush/ambush_1_1",
+      "loreexpansion:enchant/ambush/ambush_1_2"
+    ]
+  },
+  "ambush_2": {
+    "subtitle": "sounds.loreexpansion.ambush",
+    "sounds": [
+      "loreexpansion:enchant/ambush/ambush_2_0",
+      "loreexpansion:enchant/ambush/ambush_2_1",
+      "loreexpansion:enchant/ambush/ambush_2_2"
+    ]
+  },
+  "crit": {
+    "subtitle": "sounds.loreexpansion.crit",
+    "sounds": [
+      "loreexpansion:enchant/crit/crit_0",
+      "loreexpansion:enchant/crit/crit_1",
+      "loreexpansion:enchant/crit/crit_2",
+      "loreexpansion:enchant/crit/crit_3"
+    ]
+  },
+  "radiance_0": {
+    "subtitle": "sounds.loreexpansion.radiance",
+    "sounds": [
+      "loreexpansion:enchant/radiance/radiance_0"
+    ]
+  },
+  "radiance_1": {
+    "subtitle": "sounds.loreexpansion.radiance",
+    "sounds": [
+      "loreexpansion:enchant/radiance/radiance_1"
+    ]
+  }
+}
