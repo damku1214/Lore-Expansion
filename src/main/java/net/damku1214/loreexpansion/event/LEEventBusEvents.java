@@ -12,11 +12,6 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 @EventBusSubscriber(modid = LoreExpansion.MOD_ID)
 public class LEEventBusEvents {
     @SubscribeEvent
-    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(PetBeeModel.LAYER_LOCATION, PetBeeModel::createBodyLayer);
-    }
-
-    @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(LEEntities.PET_BEE.get(), PetBeeEntity.createAttributes().build());
     }

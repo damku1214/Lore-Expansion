@@ -6,7 +6,6 @@ import net.damku1214.loreexpansion.entity.custom.PetBeeEntity;
 import net.damku1214.loreexpansion.particle.LEParticles;
 import net.damku1214.loreexpansion.sound.LESounds;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.Entity;
