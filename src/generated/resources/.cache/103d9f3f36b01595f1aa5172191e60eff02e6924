@@ -1,7 +1,9 @@
-// 1.21.1	2026-04-16T18:26:51.1813646	Registries
+// 1.21.1	2026-06-16T19:15:03.2959442	Registries
 fe8fca3d0edd4059d31c6a7b984e7df63a4ea369 data/loreexpansion/enchantment/ambush.json
 689d48f15c54b422d07abd27e02eaacb8f17c253 data/loreexpansion/enchantment/busy_bee.json
-34fa9685ca1690649e59966ddc5f651cd4b91471 data/loreexpansion/enchantment/committed.json
+2e91b4cf06ff79c3d53b635146145003ee5040d2 data/loreexpansion/enchantment/chains.json
+42ac2fa5fa7e369dc02bc5d6c0aed2fa1c479462 data/loreexpansion/enchantment/committed.json
 6293474f17c3044f735b86b52c4fc3e0215e5512 data/loreexpansion/enchantment/critical_hit.json
-af54992c57b4c01aee6887cabeefb60a5f802600 data/loreexpansion/enchantment/radiance.json
-b0ad2b1c490375e38d5a3592ed7cc148de821a24 data/loreexpansion/enchantment/radiance_shot.json
+af856754a37281958c2a59137352a941b57b0abf data/loreexpansion/enchantment/leeching.json
+edcbe8d85726537707ad08d9b8403867fe8b9529 data/loreexpansion/enchantment/radiance.json
+a26c1c5f2d2668967677a1b832ce96af7a3564e3 data/loreexpansion/enchantment/radiance_shot.json
