@@ -24,3 +24,8 @@ runs
 run-data
 
 repo
+
+# claude code
+.env
+.claude/
+litellm_config.yaml
