@@ -3,6 +3,7 @@
   "description": {
     "translate": "enchantment.loreexpansion.radiance_shot"
   },
+  "exclusive_set": "#loreexpansion:exclusive_set/healing_ranged",
   "max_cost": {
     "base": 65,
     "per_level_above_first": 9

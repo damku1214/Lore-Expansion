@@ -1,9 +1,9 @@
 {
   "anvil_cost": 4,
   "description": {
-    "translate": "enchantment.loreexpansion.committed"
+    "translate": "enchantment.loreexpansion.leeching"
   },
-  "exclusive_set": "#minecraft:exclusive_set/damage",
+  "exclusive_set": "#loreexpansion:exclusive_set/healing_melee",
   "max_cost": {
     "base": 65,
     "per_level_above_first": 9

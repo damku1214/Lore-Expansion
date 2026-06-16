@@ -28,6 +28,9 @@ public class LETags {
     public static class Enchants {
         public static final TagKey<Enchantment> POWERFUL_ENCHANTS = createTag("powerful_enchants");
 
+        public static final TagKey<Enchantment> HEALING_EXCLUSIVE_MELEE = createTag("exclusive_set/healing_melee");
+        public static final TagKey<Enchantment> HEALING_EXCLUSIVE_RANGED = createTag("exclusive_set/healing_ranged");
+
         private static TagKey<Enchantment> createTag(String name) {
             return TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, name));
         }

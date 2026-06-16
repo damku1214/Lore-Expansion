@@ -3,6 +3,7 @@
   "description": {
     "translate": "enchantment.loreexpansion.radiance"
   },
+  "exclusive_set": "#loreexpansion:exclusive_set/healing_melee",
   "max_cost": {
     "base": 37,
     "per_level_above_first": 2
