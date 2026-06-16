@@ -16,6 +16,8 @@ public class LESounds {
     public static final Supplier<SoundEvent> AMBUSH_0 = registerSoundEvent("ambush_0");
     public static final Supplier<SoundEvent> AMBUSH_1 = registerSoundEvent("ambush_1");
     public static final Supplier<SoundEvent> AMBUSH_2 = registerSoundEvent("ambush_2");
+    public static final Supplier<SoundEvent> CHAINS_CAST = registerSoundEvent("chains_cast");
+    public static final Supplier<SoundEvent> CHAINS_BREAK = registerSoundEvent("chains_break");
     public static final Supplier<SoundEvent> CRIT = registerSoundEvent("crit");
     public static final Supplier<SoundEvent> RADIANCE_0 = registerSoundEvent("radiance_0");
     public static final Supplier<SoundEvent> RADIANCE_1 = registerSoundEvent("radiance_1");

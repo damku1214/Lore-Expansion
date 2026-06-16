@@ -2,7 +2,9 @@
   "enchantment.loreexpansion.ambush": "Ambush",
   "enchantment.loreexpansion.ambush.desc": "Attacks from behind and attacks on mobs that are not actively targeting you deal increased damage.",
   "enchantment.loreexpansion.busy_bee": "Busy Bee",
-  "enchantment.loreexpansion.busy_bee.desc": "Grants a chance for a bee to spawn after defeating a mob, with up to 3 bees joining the hero's side.",
+  "enchantment.loreexpansion.busy_bee.desc": "Grants a chance for a bee to spawn after defeating a mob, with up to 3 bees joining your side.",
+  "enchantment.loreexpansion.chains": "Chains",
+  "enchantment.loreexpansion.chains.desc": "Has a 30% chance to chain a cluster of mobs together and keep them bound for a short time.",
   "enchantment.loreexpansion.committed": "Committed",
   "enchantment.loreexpansion.committed.desc": "Deal increased damage against already wounded enemies.",
   "enchantment.loreexpansion.critical_hit": "Critical Hit",
@@ -15,8 +17,11 @@
   "enchantment.loreexpansion.radiance_shot.desc": "Has a 50% chance to spawn a circular area that heals you and all allies within the area.",
 
   "effect.loreexpansion.marked": "Marked",
+  "effect.loreexpansion.chained": "Chained",
 
   "sounds.loreexpansion.ambush": "Ambush",
+  "sounds.loreexpansion.chains_cast": "Chains cast",
+  "sounds.loreexpansion.chains_break": "Chains break",
   "sounds.loreexpansion.crit": "Critical hit",
   "sounds.loreexpansion.radiance": "Radiance",
 

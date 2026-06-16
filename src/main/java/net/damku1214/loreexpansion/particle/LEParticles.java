@@ -19,6 +19,9 @@ public class LEParticles {
     public static final Supplier<SimpleParticleType> PET_BEE_SQUARE =
             PARTICLES.register("pet_bee_square", () -> new SimpleParticleType(true));
 
+    public static final Supplier<SimpleParticleType> CHAINED_RING =
+            PARTICLES.register("chained_ring", () -> new SimpleParticleType(true));
+
     public static final Supplier<SimpleParticleType> CRIT_SKULL =
             PARTICLES.register("crit_skull", () -> new SimpleParticleType(true));
 

@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion.event;
 
 import net.damku1214.loreexpansion.LoreExpansion;
+import net.damku1214.loreexpansion.effect.LEEffects;
 import net.damku1214.loreexpansion.enchant.LEEnchants;
 import net.damku1214.loreexpansion.entity.custom.PetBeeEntity;
 import net.damku1214.loreexpansion.particle.LEParticles;
@@ -8,6 +9,8 @@ import net.damku1214.loreexpansion.sound.LESounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -53,6 +56,7 @@ public class LEEvents {
 
     public static void procMeleeEnchants(LivingIncomingDamageEvent event, ItemStack stack) {
         attemptAmbush(event, stack);
+        attemptChains(event, stack);
         applyCommitted(event, stack);
         attemptCriticalHit(event, stack);
         attemptRadiance(event, stack, true);
@@ -114,6 +118,31 @@ public class LEEvents {
 
             level.sendParticles(LEParticles.PET_BEE_SMOKE.get(), bee.getX(), bee.getY() + 0.5, bee.getZ(), 16, -0.25 + Math.random() * 0.5, -0.125 + Math.random() * 0.25, -0.25 + Math.random() * 0.5, 0.05);
             level.sendParticles(LEParticles.PET_BEE_SQUARE.get(), bee.getX(), bee.getY() + 0.5, bee.getZ(), 10, 0, 0, 0, 0.1);
+        }
+    }
+
+    public static void attemptChains(LivingIncomingDamageEvent event, ItemStack stack) {
+        LivingEntity attacker = (LivingEntity) event.getSource().getEntity();
+        assert attacker != null;
+        LivingEntity target = event.getEntity();
+
+        ServerLevel level = (ServerLevel) attacker.level();
+        int enchantLevel = stack.getEnchantmentLevel(attacker.level().holderOrThrow(LEEnchants.CHAINS));
+
+        if (enchantLevel == 0 || !(Math.random() < 0.3)) return;
+
+        int durationTicks = enchantLevel * 20;
+
+        AABB area = target.getBoundingBox().inflate(5);
+        List<LivingEntity> nearby = level.getNearbyEntities(LivingEntity.class,
+                TargetingConditions.forCombat(), attacker, area);
+
+        int chainedCount = 0;
+        for (LivingEntity mob : nearby) {
+            if (mob == attacker || chainedCount > 3) break;
+            mob.addEffect(new MobEffectInstance(LEEffects.CHAINED, durationTicks, 0, false, false));
+            level.playSound(null, target.blockPosition(), LESounds.CHAINS_CAST.get(), SoundSource.PLAYERS);
+            chainedCount ++;
         }
     }
 

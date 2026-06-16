@@ -18,6 +18,7 @@ public class LEClientEvents {
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(LEParticles.PET_BEE_SMOKE.get(), PetBeeSmokeParticle.Provider::new);
         event.registerSpriteSet(LEParticles.PET_BEE_SQUARE.get(), PetBeeSquareParticle.Provider::new);
+        event.registerSpriteSet(LEParticles.CHAINED_RING.get(), ChainedRingParticle.Provider::new);
         event.registerSpriteSet(LEParticles.CRIT_SKULL.get(), CritSkullParticle.Provider::new);
         event.registerSpriteSet(LEParticles.CRIT_RING.get(), CritRingParticle.Provider::new);
         event.registerSpriteSet(LEParticles.CRIT_SQUARE.get(), CritSquareParticle.Provider::new);

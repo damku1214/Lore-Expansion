@@ -19,6 +19,8 @@ public class LEEnchants {
             ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, "ambush"));
     public static final ResourceKey<Enchantment> BUSY_BEE = ResourceKey.create(Registries.ENCHANTMENT,
             ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, "busy_bee"));
+    public static final ResourceKey<Enchantment> CHAINS = ResourceKey.create(Registries.ENCHANTMENT,
+            ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, "chains"));
     public static final ResourceKey<Enchantment> COMMITTED = ResourceKey.create(Registries.ENCHANTMENT,
             ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, "committed"));
     public static final ResourceKey<Enchantment> CRITICAL_HIT = ResourceKey.create(Registries.ENCHANTMENT,
@@ -51,6 +53,20 @@ public class LEEnchants {
 
         register(
                 context, BUSY_BEE, Enchantment.enchantment(
+                        Enchantment.definition(
+                                items.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
+                                2,
+                                3,
+                                Enchantment.dynamicCost(15, 9),
+                                Enchantment.dynamicCost(65, 9),
+                                4,
+                                EquipmentSlotGroup.MAINHAND
+                        )
+                )
+        );
+
+        register(
+                context, CHAINS, Enchantment.enchantment(
                         Enchantment.definition(
                                 items.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
                                 2,
@@ -102,7 +118,7 @@ public class LEEnchants {
                                 4,
                                 EquipmentSlotGroup.MAINHAND
                         )
-                ).exclusiveWith(enchants.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
+                ).exclusiveWith(enchants.getOrThrow(LETags.Enchants.HEALING_EXCLUSIVE_MELEE))
         );
 
         register(
@@ -116,7 +132,7 @@ public class LEEnchants {
                                 8,
                                 EquipmentSlotGroup.MAINHAND
                         )
-                )
+                ).exclusiveWith(enchants.getOrThrow(LETags.Enchants.HEALING_EXCLUSIVE_MELEE))
         );
 
         register(
@@ -130,7 +146,7 @@ public class LEEnchants {
                                 4,
                                 EquipmentSlotGroup.MAINHAND
                         )
-                )
+                ).exclusiveWith(enchants.getOrThrow(LETags.Enchants.HEALING_EXCLUSIVE_RANGED))
         );
     }
 

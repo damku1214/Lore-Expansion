@@ -1,6 +1,10 @@
 {
   "values": [
     "loreexpansion:ambush",
+    "loreexpansion:busy_bee",
+    "loreexpansion:chains",
+    "loreexpansion:committed",
+    "loreexpansion:leeching",
     "loreexpansion:radiance_shot"
   ]
 }
