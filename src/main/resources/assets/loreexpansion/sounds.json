@@ -23,6 +23,20 @@
       "loreexpansion:enchant/ambush/ambush_2_2"
     ]
   },
+  "chains_cast": {
+    "subtitle": "sounds.loreexpansion.chains_cast",
+    "sounds": [
+      "loreexpansion:enchant/chains/chains_cast_0",
+      "loreexpansion:enchant/chains/chains_cast_1"
+    ]
+  },
+  "chains_break": {
+    "subtitle": "sounds.loreexpansion.chains_break",
+    "sounds": [
+      "loreexpansion:enchant/chains/chains_break_0",
+      "loreexpansion:enchant/chains/chains_break_1"
+    ]
+  },
   "crit": {
     "subtitle": "sounds.loreexpansion.crit",
     "sounds": [
