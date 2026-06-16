@@ -10,7 +10,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -27,7 +26,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import java.util.List;
 
 @EventBusSubscriber(modid = LoreExpansion.MOD_ID)
-public class LEEvents {
+public class LEEnchantEvents {
     @SubscribeEvent
     public static void procOnHitEnchants(LivingIncomingDamageEvent event) {
         Entity attacker = event.getSource().getEntity();
