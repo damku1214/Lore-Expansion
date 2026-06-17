@@ -4,8 +4,6 @@ import net.damku1214.loreexpansion.LoreExpansion;
 import net.damku1214.loreexpansion.entity.model.PetBeeModel;
 import net.damku1214.loreexpansion.particle.LEParticles;
 import net.damku1214.loreexpansion.particle.custom.*;
-import net.minecraft.client.particle.TextureSheetParticle;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -18,7 +16,9 @@ public class LEClientEvents {
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(LEParticles.PET_BEE_SMOKE.get(), PetBeeSmokeParticle.Provider::new);
         event.registerSpriteSet(LEParticles.PET_BEE_SQUARE.get(), PetBeeSquareParticle.Provider::new);
-        event.registerSpriteSet(LEParticles.CHAINED_RING.get(), ChainedRingParticle.Provider::new);
+        event.registerSpriteSet(LEParticles.COMMITTED_SQUARE.get(), CommittedSquareParticle.Provider::new);
+        event.registerSpriteSet(LEParticles.CHAINS_RING.get(), ChainsRingParticle.Provider::new);
+        event.registerSpriteSet(LEParticles.CHAINS_SQUARE.get(), ChainsSquareParticle.Provider::new);
         event.registerSpriteSet(LEParticles.CRIT_SKULL.get(), CritSkullParticle.Provider::new);
         event.registerSpriteSet(LEParticles.CRIT_RING.get(), CritRingParticle.Provider::new);
         event.registerSpriteSet(LEParticles.CRIT_SQUARE.get(), CritSquareParticle.Provider::new);

@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion.entity;
 
 import net.damku1214.loreexpansion.LoreExpansion;
+import net.damku1214.loreexpansion.entity.custom.ChainsEntity;
 import net.damku1214.loreexpansion.entity.custom.MarkEntity;
 import net.damku1214.loreexpansion.entity.custom.PetBeeEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,11 +18,15 @@ public class LEEntities {
 
     public static final Supplier<EntityType<MarkEntity>> MARK =
             ENTITY_TYPES.register("mark", () -> EntityType.Builder.<MarkEntity>of(MarkEntity::new, MobCategory.MISC)
-                    .sized(0.1F, 0.1F).clientTrackingRange(16).build("mark"));
+                    .sized(0.1F, 0.1F).clientTrackingRange(64).build("mark"));
 
     public static final Supplier<EntityType<PetBeeEntity>> PET_BEE =
             ENTITY_TYPES.register("pet_bee", () -> EntityType.Builder.<PetBeeEntity>of(PetBeeEntity::new, MobCategory.CREATURE)
-                    .sized(0.7F, 0.6F).eyeHeight(0.3F).clientTrackingRange(16).build("pet_bee"));
+                    .sized(0.7F, 0.6F).eyeHeight(0.3F).clientTrackingRange(64).build("pet_bee"));
+
+    public static final Supplier<EntityType<ChainsEntity>> CHAINS =
+            ENTITY_TYPES.register("chains", () -> EntityType.Builder.<ChainsEntity>of(ChainsEntity::new, MobCategory.MISC)
+                    .sized(0.1F, 0.1F).clientTrackingRange(64).noSummon().build("chains"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

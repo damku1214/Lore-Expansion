@@ -3,8 +3,10 @@ package net.damku1214.loreexpansion.event;
 import net.damku1214.loreexpansion.LoreExpansion;
 import net.damku1214.loreexpansion.effect.LEEffects;
 import net.damku1214.loreexpansion.enchant.LEEnchants;
+import net.damku1214.loreexpansion.entity.custom.ChainsEntity;
 import net.damku1214.loreexpansion.entity.custom.PetBeeEntity;
 import net.damku1214.loreexpansion.particle.LEParticles;
+import net.damku1214.loreexpansion.particle.options.CommittedParticleOptions;
 import net.damku1214.loreexpansion.sound.LESounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -137,12 +139,30 @@ public class LEEnchantEvents {
                 TargetingConditions.forCombat(), attacker, area);
 
         int chainedCount = 0;
+
+        boolean isTargetAlreadyChained = target.hasEffect(LEEffects.CHAINED);
+        target.addEffect(new MobEffectInstance(LEEffects.CHAINED, durationTicks, 0, false, false));
+        LivingEntity prevChainedEntity = target;
         for (LivingEntity mob : nearby) {
-            if (mob == attacker || chainedCount > 3) break;
+            if (mob == attacker || mob == target || chainedCount > 1) continue;
+
+            boolean areAlreadyChained = mob.hasEffect(LEEffects.CHAINED) && prevChainedEntity.hasEffect(LEEffects.CHAINED);
             mob.addEffect(new MobEffectInstance(LEEffects.CHAINED, durationTicks, 0, false, false));
-            level.playSound(null, target.blockPosition(), LESounds.CHAINS_CAST.get(), SoundSource.PLAYERS);
+
+            if (nearby.size() > 2 && !areAlreadyChained) {
+                ChainsEntity chainsEntity = new ChainsEntity(mob, prevChainedEntity);
+                level.addFreshEntity(chainsEntity);
+            }
+            prevChainedEntity = mob;
             chainedCount ++;
         }
+
+        if (!(isTargetAlreadyChained && prevChainedEntity.hasEffect(LEEffects.CHAINED))) {
+            ChainsEntity chainsEntity = new ChainsEntity(target, prevChainedEntity);
+            level.addFreshEntity(chainsEntity);
+        }
+
+        level.playSound(null, target.blockPosition(), LESounds.CHAINS_CAST.get(), SoundSource.PLAYERS);
     }
 
     public static void applyCommitted(LivingIncomingDamageEvent event, ItemStack stack) {
@@ -157,7 +177,14 @@ public class LEEnchantEvents {
 
         if (event.getAmount() > 0 && enchantLevel > 0) {
             event.setAmount(event.getAmount() * (1 + (1 - targetHealthPercent) * (0.25f + 0.25f * enchantLevel)));
-            level.sendParticles(LEParticles.CRIT_SQUARE.get(), target.getX(), target.getY() + 0.5, target.getZ(), 12, 0, 0, 0, 0.5);
+            for (int i = 0; i < 8; i++) {
+                double angle = Math.random() * Math.PI * 2;
+                double speed = 0.15 + Math.random() * 0.1;
+                float length = 0.15f + (float)Math.random() * 0.15f;
+                level.sendParticles(new CommittedParticleOptions(length),
+                        target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ(),
+                        1, Math.cos(angle) * speed, (Math.random() - 0.5) * 0.05, Math.sin(angle) * speed, 0);
+            }
         }
     }
 

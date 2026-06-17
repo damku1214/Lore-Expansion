@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion;
 
 import net.damku1214.loreexpansion.entity.LEEntities;
+import net.damku1214.loreexpansion.entity.renderer.ChainsRenderer;
 import net.damku1214.loreexpansion.entity.renderer.MarkRenderer;
 import net.damku1214.loreexpansion.entity.renderer.PetBeeRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -29,5 +30,6 @@ public class LoreExpansionClient {
     public static void onClientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(LEEntities.PET_BEE.get(), PetBeeRenderer::new);
         EntityRenderers.register(LEEntities.MARK.get(), MarkRenderer::new);
+        EntityRenderers.register(LEEntities.CHAINS.get(), ChainsRenderer::new);
     }
 }
