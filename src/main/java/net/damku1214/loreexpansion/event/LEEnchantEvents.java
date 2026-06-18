@@ -6,7 +6,6 @@ import net.damku1214.loreexpansion.enchant.LEEnchants;
 import net.damku1214.loreexpansion.entity.custom.ChainsEntity;
 import net.damku1214.loreexpansion.entity.custom.PetBeeEntity;
 import net.damku1214.loreexpansion.particle.LEParticles;
-import net.damku1214.loreexpansion.particle.options.CommittedParticleOptions;
 import net.damku1214.loreexpansion.sound.LESounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -179,11 +178,14 @@ public class LEEnchantEvents {
             event.setAmount(event.getAmount() * (1 + (1 - targetHealthPercent) * (0.25f + 0.25f * enchantLevel)));
             for (int i = 0; i < 8; i++) {
                 double angle = Math.random() * Math.PI * 2;
-                double speed = 0.15 + Math.random() * 0.1;
-                float length = 0.15f + (float)Math.random() * 0.15f;
-                level.sendParticles(new CommittedParticleOptions(length),
+                float length = 10.0f + (float)Math.random() * 0.5f;
+                // direction is the speed vector, its magnitude is the base length
+                double dx = Math.cos(angle) * length;
+                double dz = Math.sin(angle) * length;
+                double dy = (Math.random() - 0.5) * 10;
+                level.sendParticles(LEParticles.COMMITTED_SQUARE.get(),
                         target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ(),
-                        1, Math.cos(angle) * speed, (Math.random() - 0.5) * 0.05, Math.sin(angle) * speed, 0);
+                        0, dx, dy, dz, 0);
             }
         }
     }
