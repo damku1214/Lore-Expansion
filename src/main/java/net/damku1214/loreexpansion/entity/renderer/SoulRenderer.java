@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
@@ -37,10 +38,10 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
         Matrix4f m = pose.last().pose();
 
         float u0 = 0f, u1 = 1f, v0 = 0f, v1 = 1f;
-        vc.addVertex(m, -0.5f,  0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u0,v0).setLight(light);
-        vc.addVertex(m, -0.5f, -0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u0,v1).setLight(light);
-        vc.addVertex(m,  0.5f, -0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u1,v1).setLight(light);
-        vc.addVertex(m,  0.5f,  0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u1,v0).setLight(light);
+        vc.addVertex(m, -0.5f,  0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u0,v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
+        vc.addVertex(m, -0.5f, -0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u0,v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
+        vc.addVertex(m,  0.5f, -0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u1,v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
+        vc.addVertex(m,  0.5f,  0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u1,v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
 
         pose.popPose();
         super.render(entity, yaw, partialTick, pose, buffers, light);
@@ -125,10 +126,10 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
             int bAlpha = (int) alphaB;
 
             // Blue tint: r=80, g=140, b=255
-            vc.addVertex(m, a1x, a1y, a1z).setColor(80, 140, 255, aAlpha).setUv(0f, 0f).setLight(light);
-            vc.addVertex(m, a2x, a2y, a2z).setColor(80, 140, 255, aAlpha).setUv(1f, 0f).setLight(light);
-            vc.addVertex(m, b2x, b2y, b2z).setColor(80, 140, 255, bAlpha).setUv(1f, 1f).setLight(light);
-            vc.addVertex(m, b1x, b1y, b1z).setColor(80, 140, 255, bAlpha).setUv(0f, 1f).setLight(light);
+            vc.addVertex(m, a1x, a1y, a1z).setColor(80, 140, 255, aAlpha).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
+            vc.addVertex(m, a2x, a2y, a2z).setColor(80, 140, 255, aAlpha).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
+            vc.addVertex(m, b2x, b2y, b2z).setColor(80, 140, 255, bAlpha).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
+            vc.addVertex(m, b1x, b1y, b1z).setColor(80, 140, 255, bAlpha).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
         }
     }
 

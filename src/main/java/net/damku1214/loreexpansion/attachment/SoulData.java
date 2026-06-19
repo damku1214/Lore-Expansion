@@ -1,5 +1,6 @@
 package net.damku1214.loreexpansion.attachment;
 
+import net.damku1214.loreexpansion.LoreExpansion;
 import net.damku1214.loreexpansion.util.LEAttributes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -16,6 +17,7 @@ public class SoulData implements INBTSerializable<CompoundTag> {
     public void setSouls(int souls, Player player) {
         int max = (int) player.getAttributeValue(LEAttributes.MAX_SOULS);
         this.souls = Mth.clamp(souls, 0, max);
+        LoreExpansion.LOGGER.info("Souls: {}", this.souls);
     }
 
     public void addSouls(int amount, Player player) {
