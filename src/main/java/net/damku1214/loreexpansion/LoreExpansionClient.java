@@ -4,6 +4,7 @@ import net.damku1214.loreexpansion.entity.LEEntities;
 import net.damku1214.loreexpansion.entity.renderer.ChainsRenderer;
 import net.damku1214.loreexpansion.entity.renderer.MarkRenderer;
 import net.damku1214.loreexpansion.entity.renderer.PetBeeRenderer;
+import net.damku1214.loreexpansion.entity.renderer.SoulRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -31,5 +32,6 @@ public class LoreExpansionClient {
         EntityRenderers.register(LEEntities.PET_BEE.get(), PetBeeRenderer::new);
         EntityRenderers.register(LEEntities.MARK.get(), MarkRenderer::new);
         EntityRenderers.register(LEEntities.CHAINS.get(), ChainsRenderer::new);
+        EntityRenderers.register(LEEntities.SOUL.get(), SoulRenderer::new);
     }
 }

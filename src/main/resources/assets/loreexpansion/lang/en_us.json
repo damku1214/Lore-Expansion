@@ -28,6 +28,11 @@
 
   "entity.loreexpansion.mark": "Mark",
   "entity.loreexpansion.pet_bee": "Bee (Pet)",
+  "entity.loreexpansion.chains": "Chains",
+  "entity.loreexpansion.soul": "Soul",
+
+  "attribute.loreexpansion.max_souls": "Max Souls",
+  "attribute.loreexpansion.soul_gathering": "Soul Gathering",
 
   "loreexpansion.configuration.title": "Lore Expansion Configs",
   "loreexpansion.configuration.section.loreexpansion.common.toml": "Lore Expansion Configs",
