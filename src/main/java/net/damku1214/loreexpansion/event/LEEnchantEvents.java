@@ -6,6 +6,7 @@ import net.damku1214.loreexpansion.enchant.LEEnchants;
 import net.damku1214.loreexpansion.entity.custom.ChainsEntity;
 import net.damku1214.loreexpansion.entity.custom.PetBeeEntity;
 import net.damku1214.loreexpansion.particle.LEParticles;
+import net.damku1214.loreexpansion.particle.option.CommittedSquareParticleOptions;
 import net.damku1214.loreexpansion.sound.LESounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -176,14 +177,14 @@ public class LEEnchantEvents {
 
         if (event.getAmount() > 0 && enchantLevel > 0) {
             event.setAmount(event.getAmount() * (1 + (1 - targetHealthPercent) * (0.25f + 0.25f * enchantLevel)));
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 12; i++) {
                 double angle = Math.random() * Math.PI * 2;
-                float length = 10.0f + (float)Math.random() * 0.5f;
+                float length = (float) (1.1f * Math.pow(targetHealthPercent - 1, 2) + 0.4f) * (0.5f * (float) Math.log(target.getBoundingBox().getXsize()) + 1.1f);
                 // direction is the speed vector, its magnitude is the base length
                 double dx = Math.cos(angle) * length;
                 double dz = Math.sin(angle) * length;
                 double dy = (Math.random() - 0.5) * 10;
-                level.sendParticles(LEParticles.COMMITTED_SQUARE.get(),
+                level.sendParticles(new CommittedSquareParticleOptions(length),
                         target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ(),
                         0, dx, dy, dz, 0);
             }
@@ -210,10 +211,12 @@ public class LEEnchantEvents {
         assert attacker != null;
         LivingEntity target = event.getEntity();
 
+        ServerLevel level = ((ServerLevel) attacker.level());
         int enchantLevel = stack.getEnchantmentLevel(attacker.level().holderOrThrow(LEEnchants.LEECHING));
 
         if (enchantLevel > 0) {
             attacker.heal(target.getMaxHealth() * (0.03f + 0.02f * enchantLevel));
+            level.playSound(null, target.blockPosition(), LESounds.LEECHING.get(), SoundSource.PLAYERS);
         }
     }
 
