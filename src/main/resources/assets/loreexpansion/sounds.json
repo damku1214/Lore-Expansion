@@ -46,6 +46,13 @@
       "loreexpansion:enchant/crit/crit_3"
     ]
   },
+  "leeching": {
+    "subtitle": "sounds.loreexpansion.leeching",
+    "sounds": [
+      "loreexpansion:enchant/leeching/leeching_0",
+      "loreexpansion:enchant/leeching/leeching_1"
+    ]
+  },
   "radiance_0": {
     "subtitle": "sounds.loreexpansion.radiance",
     "sounds": [
