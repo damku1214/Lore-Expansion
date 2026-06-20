@@ -4,9 +4,15 @@ import net.damku1214.loreexpansion.attachment.LEAttachments;
 import net.damku1214.loreexpansion.effect.LEEffects;
 import net.damku1214.loreexpansion.enchant.LEEnchantmentEffects;
 import net.damku1214.loreexpansion.entity.LEEntities;
+import net.damku1214.loreexpansion.network.SyncSoulsPacket;
 import net.damku1214.loreexpansion.particle.LEParticles;
 import net.damku1214.loreexpansion.sound.LESounds;
 import net.damku1214.loreexpansion.util.LEAttributes;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;

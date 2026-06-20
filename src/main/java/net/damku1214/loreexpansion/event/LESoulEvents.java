@@ -1,15 +1,20 @@
 package net.damku1214.loreexpansion.event;
 
 import net.damku1214.loreexpansion.LoreExpansion;
+import net.damku1214.loreexpansion.attachment.LEAttachments;
+import net.damku1214.loreexpansion.attachment.SoulData;
 import net.damku1214.loreexpansion.entity.custom.SoulEntity;
+import net.damku1214.loreexpansion.network.SyncSoulsPacket;
 import net.damku1214.loreexpansion.util.LEAttributes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 @EventBusSubscriber(modid = LoreExpansion.MOD_ID)
 public class LESoulEvents {
@@ -30,5 +35,8 @@ public class LESoulEvents {
 
         SoulEntity soul = new SoulEntity(player, dead.getX() + ox, dead.getY(), dead.getZ() + oz);
         level.addFreshEntity(soul);
+
+        SoulData data = player.getData(LEAttachments.SOUL_DATA.get());
+        PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
     }
 }

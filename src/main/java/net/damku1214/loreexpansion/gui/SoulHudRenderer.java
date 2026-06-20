@@ -4,6 +4,7 @@ import net.damku1214.loreexpansion.LoreExpansion;
 import net.damku1214.loreexpansion.attachment.LEAttachments;
 import net.damku1214.loreexpansion.attachment.SoulData;
 import net.damku1214.loreexpansion.util.LEAttributes;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +24,16 @@ public class SoulHudRenderer {
     // Full texture is 182x10 (matches XP bar dimensions), split: left=filled, right=empty
 
     @SubscribeEvent
-    public static void renderSoulBar(RenderGuiEvent.Post event) {
+    private static void maybeRenderExperienceBar(RenderGuiEvent.Post event) {
+        Minecraft mc = Minecraft.getInstance();
+        assert mc.player != null;
+        assert mc.gameMode != null;
+        if (mc.player.jumpableVehicle() == null && mc.gameMode.hasExperience()) {
+            renderSoulBar(event.getGuiGraphics());
+        }
+    }
+
+    public static void renderSoulBar(GuiGraphics gui) {
         Minecraft mc = Minecraft.getInstance();
         if (!(mc.player instanceof Player player)) return;
 
@@ -32,7 +42,6 @@ public class SoulHudRenderer {
         int maxSouls = (int) player.getAttributeValue(LEAttributes.MAX_SOULS);
         if (maxSouls <= 0) return;
 
-        GuiGraphics gui   = event.getGuiGraphics();
         int screenWidth   = mc.getWindow().getGuiScaledWidth();
         int screenHeight  = mc.getWindow().getGuiScaledHeight();
 

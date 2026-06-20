@@ -17,8 +17,10 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
 public class SoulRenderer extends EntityRenderer<SoulEntity> {
-    private static final ResourceLocation TEXTURE =
+    private static final ResourceLocation SOUL_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, "textures/entity/soul.png");
+    private static final ResourceLocation TRAIL_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, "textures/entity/soul_trail.png");
 
     public SoulRenderer(EntityRendererProvider.Context context) { super(context); }
 
@@ -34,7 +36,7 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
         pose.mulPose(Axis.XP.rotationDegrees(-entityRenderDispatcher.camera.getXRot()));
         pose.scale(0.5f, 0.5f, 0.5f);
 
-        VertexConsumer vc = buffers.getBuffer(RenderType.entityTranslucentCull(TEXTURE));
+        VertexConsumer vc = buffers.getBuffer(RenderType.entityTranslucentCull(SOUL_TEXTURE));
         Matrix4f m = pose.last().pose();
 
         float u0 = 0f, u1 = 1f, v0 = 0f, v1 = 1f;
@@ -51,7 +53,7 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
                              PoseStack pose, MultiBufferSource buffers, int light) {
         if (!entity.trailReady) return;
 
-        VertexConsumer vc = buffers.getBuffer(RenderType.entityTranslucentCull(TEXTURE));
+        VertexConsumer vc = buffers.getBuffer(RenderType.entityTranslucentCull(TRAIL_TEXTURE));
 
         // Head position — interpolated with partialTick for smoothness
         double hx = Mth.lerp(partialTick, entity.xOld, entity.getX());
@@ -84,8 +86,8 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
             float tB = (float)(i + 1)  / SoulEntity.TRAIL_LENGTH;
             float alphaA = (1f - tA) * 200; // 0-200 range for byte alpha
             float alphaB = (1f - tB) * 200;
-            float widthA = (1f - tA) * 0.08f;
-            float widthB = (1f - tB) * 0.08f;
+            float widthA = (1f - tA) * 0.3f;
+            float widthB = (1f - tB) * 0.3f;
 
             // Segment direction
             float dx = (float)(bx - ax);
@@ -134,5 +136,5 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull SoulEntity entity) { return TEXTURE; }
+    public @NotNull ResourceLocation getTextureLocation(@NotNull SoulEntity entity) { return SOUL_TEXTURE; }
 }

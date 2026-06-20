@@ -14,6 +14,10 @@ public class SoulData implements INBTSerializable<CompoundTag> {
 
     public int getSouls() { return this.souls; }
 
+    public void setRawSouls(int souls) {
+        this.souls = souls;
+    }
+
     public void setSouls(int souls, Player player) {
         int max = (int) player.getAttributeValue(LEAttributes.MAX_SOULS);
         this.souls = Mth.clamp(souls, 0, max);
