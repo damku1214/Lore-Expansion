@@ -1,0 +1,31 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.loreexpansion.enigma_resonator"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": 1.0,
+        "attribute": "loreexpansion:soul_gathering",
+        "id": "loreexpansion:enchantment.enigma_resonator",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "exclusive_set": "#loreexpansion:exclusive_set/damage_ranged",
+  "max_cost": {
+    "base": 28,
+    "per_level_above_first": 2
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 26,
+    "per_level_above_first": 2
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#loreexpansion:enchantable/soul_weapon",
+  "weight": 2
+}

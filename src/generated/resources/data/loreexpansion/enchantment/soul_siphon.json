@@ -1,0 +1,30 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.loreexpansion.soul_siphon"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": 1.0,
+        "attribute": "loreexpansion:soul_gathering",
+        "id": "loreexpansion:enchantment.soul_siphon",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 28,
+    "per_level_above_first": 2
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 26,
+    "per_level_above_first": 2
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#loreexpansion:enchantable/soul_weapon",
+  "weight": 2
+}
