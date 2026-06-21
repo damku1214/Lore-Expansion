@@ -19,7 +19,7 @@ import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.EnchantmentAttributeEffect;
 
 public class LEEnchants {
-    private static final int COMMON_WEIGHT = 4;
+    private static final int COMMON_WEIGHT = 5;
     private static final int POWERFUL_WEIGHT = 3;
     private static final int COMMON_ANVIL_COST = 4;
     private static final int POWERFUL_ANVIL_COST = 8;
@@ -228,14 +228,14 @@ public class LEEnchants {
     }
 
     private static Enchantment.Cost minCost(int maxLevel, boolean isPowerful) {
-        int target = isPowerful ? 40 : 34;
-        int step = 2;
+        int target = isPowerful ? 39 : 34;
+        int step = 1;
         return Enchantment.dynamicCost(target - (maxLevel - 1) * step, step);
     }
 
     private static Enchantment.Cost maxCost(int maxLevel, boolean isPowerful) {
-        int target = isPowerful ? 41 : 36;
-        int step = 2;
+        int target = isPowerful ? 40 : 36;
+        int step = 1;
         return Enchantment.dynamicCost(target - (maxLevel - 1) * step, step);
     }
 }

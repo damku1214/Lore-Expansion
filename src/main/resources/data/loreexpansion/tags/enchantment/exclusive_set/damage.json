@@ -1,6 +1,9 @@
 {
   "values": [
-    "#minecraft:exclusive_set/damage",
-    "#loreexpansion:exclusive_set/damage_ranged"
+    "#loreexpansion:exclusive_set/damage_melee",
+    "#loreexpansion:exclusive_set/damage_ranged",
+    "loreexpansion:committed",
+    "loreexpansion:critical_hit",
+    "loreexpansion:enigma_resonator"
   ]
 }
