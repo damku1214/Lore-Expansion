@@ -4,13 +4,13 @@
     "translate": "enchantment.loreexpansion.ambush"
   },
   "max_cost": {
-    "base": 65,
-    "per_level_above_first": 9
+    "base": 34,
+    "per_level_above_first": 2
   },
-  "max_level": 3,
+  "max_level": 2,
   "min_cost": {
-    "base": 15,
-    "per_level_above_first": 9
+    "base": 32,
+    "per_level_above_first": 2
   },
   "slots": [
     "mainhand"

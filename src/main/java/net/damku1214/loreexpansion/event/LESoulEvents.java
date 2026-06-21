@@ -29,14 +29,17 @@ public class LESoulEvents {
         LivingEntity dead = event.getEntity();
         ServerLevel level = (ServerLevel) player.level();
 
-        // Slight x/z deviation only, as specified
+        spawnSoul(player, dead, level);
+
+        SoulData data = player.getData(LEAttachments.SOUL_DATA.get());
+        PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
+    }
+
+    public static void spawnSoul(Player player, LivingEntity dead, ServerLevel level) {
         double ox = (Math.random() - 0.5) * 0.8;
         double oz = (Math.random() - 0.5) * 0.8;
 
         SoulEntity soul = new SoulEntity(player, dead.getX() + ox, dead.getY(), dead.getZ() + oz);
         level.addFreshEntity(soul);
-
-        SoulData data = player.getData(LEAttachments.SOUL_DATA.get());
-        PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
     }
 }

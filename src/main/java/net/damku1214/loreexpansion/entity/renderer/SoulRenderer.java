@@ -86,8 +86,9 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
             float tB = (float)(i + 1)  / SoulEntity.TRAIL_LENGTH;
             float alphaA = (1f - tA) * 200; // 0-200 range for byte alpha
             float alphaB = (1f - tB) * 200;
-            float widthA = (1f - tA) * 0.3f;
-            float widthB = (1f - tB) * 0.3f;
+            // multiplier is width
+            float widthA = (1f - tA) * 0.35f;
+            float widthB = (1f - tB) * 0.35f;
 
             // Segment direction
             float dx = (float)(bx - ax);

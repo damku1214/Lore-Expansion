@@ -18,6 +18,10 @@ group = mod_group_id
 
 repositories {
     maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {
         url "https://cursemaven.com"
     }
 }
@@ -98,19 +102,28 @@ dependencies {
     // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
     implementation "net.neoforged:neoforge:${neo_version}"
 
+    // Enchant reroll
     runtimeOnly("curse.maven:easy-magic-456239:7151100")
     runtimeOnly("curse.maven:puzzles-lib-495476:7140307")
 
+    // Enchant desc
     runtimeOnly("curse.maven:enchantment-descriptions-250419:7039849")
     runtimeOnly("curse.maven:bookshelf-228525:7606240")
     runtimeOnly("curse.maven:prickle-1023259:6961457")
 
+    // Dummy
     runtimeOnly("curse.maven:mmmmmmmmmmmm-225738:7206981")
     runtimeOnly("curse.maven:selene-499980:7815717")
 
+    // Damage indicators
     runtimeOnly("curse.maven:immersive-damage-indicators-1255453:6480777")
     runtimeOnly("curse.maven:immersive-messages-api-1109713:6480770")
     runtimeOnly("curse.maven:txnilib-1104882:6533725")
+
+    // Rolling
+    implementation("maven.modrinth:combat-roll:2.0.6+1.21.1-neoforge")
+    implementation("maven.modrinth:cloth-config:15.0.140+neoforge")
+    implementation("maven.modrinth:playeranimator:2.0.4+1.21.1-forge")
 
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

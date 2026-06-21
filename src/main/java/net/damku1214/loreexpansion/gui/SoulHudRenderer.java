@@ -45,21 +45,21 @@ public class SoulHudRenderer {
         int screenWidth   = mc.getWindow().getGuiScaledWidth();
         int screenHeight  = mc.getWindow().getGuiScaledHeight();
 
-        int barWidth  = 182;
-        int barHeight = 5;
+        int barWidth  = 186;
+        int barHeight = 9;
         int x = screenWidth  / 2 - barWidth / 2;
         // Anchor above health bar — health bar sits at screenHeight - 49
         // Soul bar goes 8px above it
-        int y = screenHeight - 57;
+        int y = screenHeight - 31;
 
         float fill = (float) souls / maxSouls;
         int filledPx = (int)(fill * barWidth);
 
         // Empty bar
-        gui.blit(EMPTY_TEXTURE, x, y, 0, 0, barWidth, barHeight, 182, barHeight);
+        gui.blit(EMPTY_TEXTURE, x, y, 0, 0, barWidth, barHeight, barWidth, barHeight);
         // Filled portion
         if (filledPx > 0) {
-            gui.blit(FULL_TEXTURE, x, y, 0, 0, filledPx, barHeight, 182, barHeight);
+            gui.blit(FULL_TEXTURE, x, y, 0, 0, filledPx, barHeight, barWidth, barHeight);
         }
     }
 }

@@ -13,7 +13,7 @@ public class LEAttributes {
             DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, LoreExpansion.MOD_ID);
 
     public static final Holder<Attribute> MAX_SOULS = ATTRIBUTES.register("max_souls",
-            () -> new RangedAttribute("attribute.loreexpansion.max_souls", 300.0, 0.0, 10000.0)
+            () -> new RangedAttribute("attribute.loreexpansion.max_souls", 100.0, 0.0, 10000.0)
                     .setSyncable(true));
 
     // Multiplier on souls gained per kill; 0 = no gathering, 1 = default

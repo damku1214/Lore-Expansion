@@ -18,6 +18,8 @@ public class LETags {
     }
 
     public static class Items {
+        public static final TagKey<Item> WEAPON = createTag("enchantable/weapon");
+        public static final TagKey<Item> RANGED_WEAPON = createTag("enchantable/ranged_weapon");
         public static final TagKey<Item> SOUL_WEAPON = createTag("enchantable/soul_weapon");
 
         private static TagKey<Item> createTag(String name) {
@@ -28,8 +30,11 @@ public class LETags {
     public static class Enchants {
         public static final TagKey<Enchantment> POWERFUL_ENCHANTS = createTag("powerful_enchants");
 
+        public static final TagKey<Enchantment> HEALING_EXCLUSIVE = createTag("exclusive_set/healing");
         public static final TagKey<Enchantment> HEALING_EXCLUSIVE_MELEE = createTag("exclusive_set/healing_melee");
         public static final TagKey<Enchantment> HEALING_EXCLUSIVE_RANGED = createTag("exclusive_set/healing_ranged");
+        public static final TagKey<Enchantment> DAMAGE_EXCLUSIVE = createTag("exclusive_set/damage");
+        public static final TagKey<Enchantment> DAMAGE_EXCLUSIVE_RANGED = createTag("exclusive_set/damage_ranged");
 
         private static TagKey<Enchantment> createTag(String name) {
             return TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, name));

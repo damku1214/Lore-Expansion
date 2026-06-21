@@ -1,6 +1,7 @@
 {
   "values": [
-    "#loreexpansion:enchantable/soul_weapon_melee",
+    "#c:tools/bow",
+    "#c:tools/crossbow",
     "#loreexpansion:enchantable/soul_weapon_ranged"
   ]
 }

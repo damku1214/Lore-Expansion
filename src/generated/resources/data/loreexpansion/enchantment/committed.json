@@ -3,19 +3,19 @@
   "description": {
     "translate": "enchantment.loreexpansion.committed"
   },
-  "exclusive_set": "#minecraft:exclusive_set/damage",
+  "exclusive_set": "#loreexpansion:exclusive_set/damage_ranged",
   "max_cost": {
-    "base": 65,
-    "per_level_above_first": 9
+    "base": 30,
+    "per_level_above_first": 2
   },
-  "max_level": 3,
+  "max_level": 4,
   "min_cost": {
-    "base": 15,
-    "per_level_above_first": 9
+    "base": 28,
+    "per_level_above_first": 2
   },
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:enchantable/sharp_weapon",
+  "supported_items": "#loreexpansion:enchantable/weapon",
   "weight": 2
 }

@@ -3,6 +3,7 @@ package net.damku1214.loreexpansion.entity.custom;
 import net.damku1214.loreexpansion.attachment.LEAttachments;
 import net.damku1214.loreexpansion.attachment.SoulData;
 import net.damku1214.loreexpansion.entity.LEEntities;
+import net.damku1214.loreexpansion.event.LEEnchantEvents;
 import net.damku1214.loreexpansion.network.SyncSoulsPacket;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -108,6 +109,8 @@ public class SoulEntity extends Entity {
                 data.addSouls(1, owner);
                 PacketDistributor.sendToPlayer((ServerPlayer) owner, new SyncSoulsPacket(data.getSouls()));
                 discard();
+
+                LEEnchantEvents.applyAnimaConduit(owner);
                 return;
             }
 

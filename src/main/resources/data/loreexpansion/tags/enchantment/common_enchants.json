@@ -1,10 +1,13 @@
 {
   "values": [
     "loreexpansion:ambush",
+    "loreexpansion:anima_conduit",
     "loreexpansion:busy_bee",
     "loreexpansion:chains",
     "loreexpansion:committed",
+    "loreexpansion:enigma_resonator",
     "loreexpansion:leeching",
-    "loreexpansion:radiance_shot"
+    "loreexpansion:radiance_shot",
+    "loreexpansion:soul_siphon"
   ]
 }
