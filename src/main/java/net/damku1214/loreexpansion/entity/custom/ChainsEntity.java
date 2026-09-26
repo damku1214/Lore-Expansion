@@ -40,7 +40,7 @@ public class ChainsEntity extends Entity {
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         builder.define(FROM_ID, -1);
-        builder.define(TO_ID,   -1);
+        builder.define(TO_ID, -1);
     }
 
     @Override
@@ -49,24 +49,19 @@ public class ChainsEntity extends Entity {
         if (level().isClientSide) return;
 
         LivingEntity from = getFrom();
-        LivingEntity to   = getTo();
+        LivingEntity to = getTo();
 
-        // Re-resolve UUIDs after chunk load
         if ((from == null || to == null) && level() instanceof ServerLevel serverLevel) {
             if (from == null && fromUUID != null)
-                from = serverLevel.getEntity(fromUUID) instanceof LivingEntity le ? le : null;
+                from = serverLevel.getEntity(fromUUID) instanceof LivingEntity entity ? entity : null;
             if (to == null && toUUID != null)
-                to = serverLevel.getEntity(toUUID) instanceof LivingEntity le ? le : null;
+                to = serverLevel.getEntity(toUUID) instanceof LivingEntity entity ? entity : null;
 
             if (from != null) entityData.set(FROM_ID, from.getId());
-            if (to   != null) entityData.set(TO_ID,   to.getId());
+            if (to != null) entityData.set(TO_ID, to.getId());
         }
 
-        // Discard if either end is gone or no longer chained
-        if (from == null || to == null
-                || !from.hasEffect(LEEffects.CHAINED)
-                || !to.hasEffect(LEEffects.CHAINED)
-                || !from.isAlive() || !to.isAlive()) {
+        if (from == null || to == null || !from.hasEffect(LEEffects.CHAINED) || !to.hasEffect(LEEffects.CHAINED) || !from.isAlive() || !to.isAlive()) {
             this.discard();
             return;
         }
@@ -86,12 +81,12 @@ public class ChainsEntity extends Entity {
 
     @Override public void addAdditionalSaveData(CompoundTag tag) {
         if (fromUUID != null) tag.putUUID("FromUUID", fromUUID);
-        if (toUUID   != null) tag.putUUID("ToUUID",   toUUID);
+        if (toUUID != null) tag.putUUID("ToUUID", toUUID);
     }
 
     @Override public void readAdditionalSaveData(CompoundTag tag) {
         if (tag.hasUUID("FromUUID")) fromUUID = tag.getUUID("FromUUID");
-        if (tag.hasUUID("ToUUID"))   toUUID   = tag.getUUID("ToUUID");
+        if (tag.hasUUID("ToUUID")) toUUID = tag.getUUID("ToUUID");
     }
 
     public float getAnimatedWidth(float partialTick, float baseWidth) {
@@ -110,7 +105,7 @@ public class ChainsEntity extends Entity {
         if (level().isClientSide) return;
 
         LivingEntity from = getFrom();
-        LivingEntity to   = getTo();
+        LivingEntity to = getTo();
         if (from == null || to == null) return;
 
         float dx = (float)(to.getX() - from.getX());
@@ -124,7 +119,7 @@ public class ChainsEntity extends Entity {
             double px = Mth.lerp(t, from.getX(), to.getX());
             double py = Mth.lerp(t, from.getY() + from.getBbHeight() * 0.5, to.getY() + to.getBbHeight() * 0.5);
             double pz = Mth.lerp(t, from.getZ(), to.getZ());
-            ((ServerLevel)level()).sendParticles(LEParticles.CHAINS_SQUARE.get(), px, py, pz, 1, 0.5, 0, 0.5, 0);
+            ((ServerLevel)level()).sendParticles(LEParticles.CHAINS_SQUARE.get(), px, py, pz, 1, 0.3, 0, 0.3, 0);
         }
     }
 }
