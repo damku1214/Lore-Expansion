@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion.particle.custom;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.damku1214.loreexpansion.LoreExpansion;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -76,7 +77,7 @@ public class CritSkullParticle extends TextureSheetParticle {
         float f2 = this.getU1();
         float f3 = this.getV0();
         float f4 = this.getV1();
-        int i = this.getLightColor(partialTicks);
+        int i = 15728880;
         this.renderVertex(buffer, quaternion, x, y, z, 1.0F, -1.0F, f, f2, f4, i);
         this.renderVertex(buffer, quaternion, x, y, z, 1.0F, 1.0F, f, f2, f3, i);
         this.renderVertex(buffer, quaternion, x, y, z, -1.0F, 1.0F, f, f1, f3, i);
