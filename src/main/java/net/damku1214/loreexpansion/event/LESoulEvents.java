@@ -13,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
@@ -29,15 +30,22 @@ public class LESoulEvents {
         LivingEntity dead = event.getEntity();
         ServerLevel level = (ServerLevel) player.level();
 
-        spawnSoul(player, dead, level);
+        spawnSoul(player, dead, level, false);
 
         SoulData data = player.getData(LEAttachments.SOUL_DATA.get());
         PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
     }
 
-    public static void spawnSoul(Player player, LivingEntity dead, ServerLevel level) {
-        double ox = (Math.random() - 0.5) * 0.8;
-        double oz = (Math.random() - 0.5) * 0.8;
+    @SubscribeEvent
+    public static void onLogin(EntityJoinLevelEvent event) {
+        if (!(event.getEntity() instanceof Player player) || player.level().isClientSide) return;
+        SoulData data = player.getData(LEAttachments.SOUL_DATA.get());
+        PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
+    }
+
+    public static void spawnSoul(Player player, LivingEntity dead, ServerLevel level, boolean isSoulSiphon) {
+        double ox = (Math.random() - 0.5) * (isSoulSiphon ? 2 : 0.8);
+        double oz = (Math.random() - 0.5) * (isSoulSiphon ? 2 : 0.8);
 
         SoulEntity soul = new SoulEntity(player, dead.getX() + ox, dead.getY(), dead.getZ() + oz);
         level.addFreshEntity(soul);

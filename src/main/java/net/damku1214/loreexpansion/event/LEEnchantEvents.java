@@ -308,7 +308,7 @@ public class LEEnchantEvents {
 
         if (event.getAmount() > 0 && enchantLevel > 0 && Math.random() < 0.2) {
             for (int i = 0; i < enchantLevel; i ++) {
-                LESoulEvents.spawnSoul(player, target, level);
+                LESoulEvents.spawnSoul(player, target, level, true);
             }
         }
     }
