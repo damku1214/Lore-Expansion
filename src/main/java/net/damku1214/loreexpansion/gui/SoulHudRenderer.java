@@ -28,7 +28,7 @@ public class SoulHudRenderer {
         Minecraft mc = Minecraft.getInstance();
         assert mc.player != null;
         assert mc.gameMode != null;
-        if (mc.player.jumpableVehicle() == null && mc.gameMode.hasExperience()) {
+        if (mc.player.jumpableVehicle() == null && mc.gameMode.hasExperience() && mc.player.getAttributeValue(LEAttributes.SOUL_GATHERING) > 0) {
             renderSoulBar(event.getGuiGraphics());
         }
     }
