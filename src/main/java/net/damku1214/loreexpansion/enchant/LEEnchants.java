@@ -8,7 +8,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -19,7 +18,7 @@ import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.EnchantmentAttributeEffect;
 
 public class LEEnchants {
-    private static final int COMMON_WEIGHT = 5;
+    private static final int COMMON_WEIGHT = 4;
     private static final int POWERFUL_WEIGHT = 3;
     private static final int COMMON_ANVIL_COST = 4;
     private static final int POWERFUL_ANVIL_COST = 8;
