@@ -5,17 +5,17 @@
   },
   "exclusive_set": "#loreexpansion:exclusive_set/healing_ranged",
   "max_cost": {
-    "base": 32,
-    "per_level_above_first": 2
+    "base": 34,
+    "per_level_above_first": 1
   },
   "max_level": 3,
   "min_cost": {
-    "base": 30,
-    "per_level_above_first": 2
+    "base": 32,
+    "per_level_above_first": 1
   },
   "slots": [
     "mainhand"
   ],
   "supported_items": "#loreexpansion:enchantable/ranged_weapon",
-  "weight": 2
+  "weight": 4
 }

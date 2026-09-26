@@ -4,17 +4,17 @@
     "translate": "enchantment.loreexpansion.chains"
   },
   "max_cost": {
-    "base": 32,
-    "per_level_above_first": 2
+    "base": 34,
+    "per_level_above_first": 1
   },
   "max_level": 3,
   "min_cost": {
-    "base": 30,
-    "per_level_above_first": 2
+    "base": 32,
+    "per_level_above_first": 1
   },
   "slots": [
     "mainhand"
   ],
   "supported_items": "#minecraft:enchantable/sharp_weapon",
-  "weight": 2
+  "weight": 4
 }

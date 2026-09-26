@@ -3,19 +3,19 @@
   "description": {
     "translate": "enchantment.loreexpansion.critical_hit"
   },
-  "exclusive_set": "#loreexpansion:exclusive_set/damage_ranged",
+  "exclusive_set": "#loreexpansion:exclusive_set/damage",
   "max_cost": {
-    "base": 33,
-    "per_level_above_first": 2
+    "base": 36,
+    "per_level_above_first": 1
   },
   "max_level": 5,
   "min_cost": {
-    "base": 32,
-    "per_level_above_first": 2
+    "base": 35,
+    "per_level_above_first": 1
   },
   "slots": [
     "mainhand"
   ],
   "supported_items": "#loreexpansion:enchantable/weapon",
-  "weight": 2
+  "weight": 3
 }

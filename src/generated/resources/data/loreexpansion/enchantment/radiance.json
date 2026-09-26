@@ -5,17 +5,17 @@
   },
   "exclusive_set": "#loreexpansion:exclusive_set/healing_melee",
   "max_cost": {
-    "base": 37,
-    "per_level_above_first": 2
+    "base": 38,
+    "per_level_above_first": 1
   },
   "max_level": 3,
   "min_cost": {
-    "base": 36,
-    "per_level_above_first": 2
+    "base": 37,
+    "per_level_above_first": 1
   },
   "slots": [
     "mainhand"
   ],
   "supported_items": "#minecraft:enchantable/sharp_weapon",
-  "weight": 2
+  "weight": 3
 }
