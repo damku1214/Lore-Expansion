@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.damku1214.loreexpansion.LoreExpansion;
 import net.damku1214.loreexpansion.entity.custom.ChainsEntity;
+import net.damku1214.loreexpansion.particle.LEParticles;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -66,9 +67,7 @@ public class ChainsRenderer extends EntityRenderer<ChainsEntity> {
         VertexConsumer vc = bufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE));
         Matrix4f m = poseStack.last().pose();
 
-        // Draw two crossed quads (like guardian laser cross-section)
-        //renderBeamQuad(m, vc, beamLength, beamW, uScroll, packedLight, 0);
-        renderBeamQuad(m, vc, beamLength, beamW, uScroll, packedLight, (float)(Math.PI / 2));
+        renderBeamQuad(m, vc, beamLength, beamW, uScroll, LEParticles.LIGHT, (float)(Math.PI / 2));
 
         poseStack.popPose();
         super.render(entity, yaw, partialTick, poseStack, bufferSource, packedLight);

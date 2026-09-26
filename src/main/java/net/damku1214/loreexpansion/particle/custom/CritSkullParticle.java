@@ -2,6 +2,7 @@ package net.damku1214.loreexpansion.particle.custom;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.damku1214.loreexpansion.LoreExpansion;
+import net.damku1214.loreexpansion.particle.LEParticles;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -71,13 +72,18 @@ public class CritSkullParticle extends TextureSheetParticle {
     }
 
     @Override
+    protected int getLightColor(float partialTick) {
+        return LEParticles.LIGHT;
+    }
+
+    @Override
     protected void renderRotatedQuad(VertexConsumer buffer, Quaternionf quaternion, float x, float y, float z, float partialTicks) {
         float f = this.getQuadSize(partialTicks);
         float f1 = this.getU0();
         float f2 = this.getU1();
         float f3 = this.getV0();
         float f4 = this.getV1();
-        int i = 15728880;
+        int i = this.getLightColor(partialTicks);
         this.renderVertex(buffer, quaternion, x, y, z, 1.0F, -1.0F, f, f2, f4, i);
         this.renderVertex(buffer, quaternion, x, y, z, 1.0F, 1.0F, f, f2, f3, i);
         this.renderVertex(buffer, quaternion, x, y, z, -1.0F, 1.0F, f, f1, f3, i);

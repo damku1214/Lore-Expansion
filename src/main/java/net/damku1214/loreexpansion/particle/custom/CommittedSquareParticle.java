@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion.particle.custom;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.damku1214.loreexpansion.particle.LEParticles;
 import net.damku1214.loreexpansion.particle.option.CommittedSquareParticleOptions;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -75,6 +76,11 @@ public class CommittedSquareParticle extends TextureSheetParticle {
         buffer.addVertex(v1.x - camX, v1.y - camY, v1.z - camZ).setColor(1f, 1f, 1f, alpha).setUv(u1, v1t).setLight(light);
         buffer.addVertex(v2.x - camX, v2.y - camY, v2.z - camZ).setColor(1f, 1f, 1f, alpha).setUv(u0, v1t).setLight(light);
         buffer.addVertex(v3.x - camX, v3.y - camY, v3.z - camZ).setColor(1f, 1f, 1f, alpha).setUv(u0, v0t).setLight(light);
+    }
+
+    @Override
+    protected int getLightColor(float partialTick) {
+        return LEParticles.LIGHT;
     }
 
     @Override

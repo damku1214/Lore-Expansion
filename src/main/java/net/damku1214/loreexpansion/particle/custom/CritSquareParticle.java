@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion.particle.custom;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.damku1214.loreexpansion.particle.LEParticles;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -26,6 +27,11 @@ public class CritSquareParticle extends TextureSheetParticle {
     public void render(@NotNull VertexConsumer buffer, @NotNull Camera renderInfo, float partialTicks) {
         if (this.age + partialTicks >= 3) this.alpha = 1 - (((float) this.age + partialTicks - 3) / this.lifetime);
         super.render(buffer, renderInfo, partialTicks);
+    }
+
+    @Override
+    protected int getLightColor(float partialTick) {
+        return LEParticles.LIGHT;
     }
 
     @Override

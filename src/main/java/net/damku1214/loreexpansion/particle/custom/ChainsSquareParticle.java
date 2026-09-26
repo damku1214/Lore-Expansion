@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion.particle.custom;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.damku1214.loreexpansion.particle.LEParticles;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -24,17 +25,20 @@ public class ChainsSquareParticle extends TextureSheetParticle {
     public void render(@NotNull VertexConsumer buffer, @NotNull Camera renderInfo, float partialTicks) {
         float t = (this.age + partialTicks) / this.lifetime;
 
-        // Shrink in the last 4 ticks
         if (t >= (this.lifetime - 4f) / this.lifetime) {
             float shrinkProgress = (this.age + partialTicks - (this.lifetime - 4f)) / 4f;
             this.quadSize = 0.1f * (1f - shrinkProgress);
         }
 
-        // Clockwise slow rotation — oRoll is the roll angle used by super.render()
         this.oRoll = this.roll;
         this.roll = initialRoll + (this.age + partialTicks) * 0.04f;
 
         super.render(buffer, renderInfo, partialTicks);
+    }
+
+    @Override
+    protected int getLightColor(float partialTick) {
+        return LEParticles.LIGHT;
     }
 
     @Override

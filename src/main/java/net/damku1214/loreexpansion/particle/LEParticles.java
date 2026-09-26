@@ -17,6 +17,7 @@ import java.util.function.Supplier;
 public class LEParticles {
     public static final DeferredRegister<ParticleType<?>> PARTICLES =
             DeferredRegister.create(Registries.PARTICLE_TYPE, LoreExpansion.MOD_ID);
+    public static final int LIGHT = 15728880;
 
     public static final Supplier<SimpleParticleType> PET_BEE_SMOKE =
             PARTICLES.register("pet_bee_smoke", () -> new SimpleParticleType(true));

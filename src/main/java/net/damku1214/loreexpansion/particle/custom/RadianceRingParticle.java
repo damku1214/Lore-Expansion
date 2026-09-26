@@ -1,6 +1,7 @@
 package net.damku1214.loreexpansion.particle.custom;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.damku1214.loreexpansion.particle.LEParticles;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -36,6 +37,11 @@ public class RadianceRingParticle extends TextureSheetParticle {
         this.renderRotatedQuad(buffer, renderInfo, quaternionf, partialTicks);
         quaternionf.rotationYXZ((float) -Math.PI, (float) Math.PI / 2, 0.0f);
         this.renderRotatedQuad(buffer, renderInfo, quaternionf, partialTicks);
+    }
+
+    @Override
+    protected int getLightColor(float partialTick) {
+        return LEParticles.LIGHT;
     }
 
     @Override
