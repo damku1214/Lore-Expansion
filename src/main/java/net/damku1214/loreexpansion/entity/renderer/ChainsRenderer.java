@@ -81,13 +81,13 @@ public class ChainsRenderer extends EntityRenderer<ChainsEntity> {
 
         float uTiles = length * 0.5f; // how many texture tiles along the beam length
 
-        vc.addVertex(m, 0,      sin,  cos).setColor(255,255,255,255)
-                .setUv(uScroll,          0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0,1,0);
-        vc.addVertex(m, 0,     -sin, -cos).setColor(255,255,255,255)
-                .setUv(uScroll,          1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0,1,0);
+        vc.addVertex(m, 0, sin, cos).setColor(255,255,255,255)
+                .setUv(uScroll, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0,1,0);
+        vc.addVertex(m, 0, -sin, -cos).setColor(255,255,255,255)
+                .setUv(uScroll, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0,1,0);
         vc.addVertex(m, length,-sin, -cos).setColor(255,255,255,255)
                 .setUv(uScroll + uTiles, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0,1,0);
-        vc.addVertex(m, length, sin,  cos).setColor(255,255,255,255)
+        vc.addVertex(m, length, sin, cos).setColor(255,255,255,255)
                 .setUv(uScroll + uTiles, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0,1,0);
     }
 

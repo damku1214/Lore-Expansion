@@ -7,9 +7,9 @@ import net.damku1214.loreexpansion.enchant.LEEnchants;
 import net.damku1214.loreexpansion.entity.custom.ChainsEntity;
 import net.damku1214.loreexpansion.entity.custom.PetBeeEntity;
 import net.damku1214.loreexpansion.particle.LEParticles;
-import net.damku1214.loreexpansion.particle.option.CommittedSquareParticleOptions;
 import net.damku1214.loreexpansion.sound.LESounds;
 import net.damku1214.loreexpansion.util.LEAttributes;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -19,11 +19,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -42,8 +40,8 @@ public class LEEnchantEvents {
         ItemStack stack = livingEntity.getMainHandItem();
 
         boolean isFullAttack = !(attacker instanceof Player player) || player.getAttackStrengthScale(0.5F) > 0.9f;
-        if (event.getSource().is(DamageTypeTags.IS_PLAYER_ATTACK) && isFullAttack) {
-            procMeleeEnchants(event, stack);
+        if (event.getSource().is(DamageTypeTags.IS_PLAYER_ATTACK)) {
+            procMeleeEnchants(event, stack, isFullAttack);
         } else if (event.getSource().type().msgId().equals("arrow")) {
             procRangedEnchants(event, stack);
         }
@@ -60,7 +58,7 @@ public class LEEnchantEvents {
         applyLeeching(event, stack);
     }
 
-    public static void procMeleeEnchants(LivingIncomingDamageEvent event, ItemStack stack) {
+    public static void procMeleeEnchants(LivingIncomingDamageEvent event, ItemStack stack, boolean isFullAttack) {
         float additiveDmgBonus = 0.0f;
         float multiplicativeDmgBonus = 1.0f;
 
@@ -71,9 +69,11 @@ public class LEEnchantEvents {
 
         event.setAmount(event.getAmount() * multiplicativeDmgBonus * (1 + additiveDmgBonus));
 
-        attemptChains(event, stack);
-        attemptRadiance(event, stack, true);
-        attemptSoulSiphon(event, stack);
+        if (isFullAttack) {
+            attemptChains(event, stack);
+            attemptRadiance(event, stack, true);
+            attemptSoulSiphon(event, stack);
+        }
     }
 
     public static void procRangedEnchants(LivingIncomingDamageEvent event, ItemStack stack) {
@@ -211,17 +211,7 @@ public class LEEnchantEvents {
 
         if (event.getAmount() > 0 && enchantLevel > 0) {
             dmgBonus = 1 + (1 - targetHealthPercent) * (0.1667f * enchantLevel + 0.3333f);
-            for (int i = 0; i < 12; i++) {
-                double angle = Math.random() * Math.PI * 2;
-                float length = (float) (1.1f * Math.pow(targetHealthPercent - 1, 2) + 0.4f) * (0.5f * (float) Math.log(target.getBoundingBox().getXsize()) + 1.1f);
-                // direction is the speed vector, its magnitude is the base length
-                double dx = Math.cos(angle) * length;
-                double dz = Math.sin(angle) * length;
-                double dy = (Math.random() - 0.5) * 10;
-                level.sendParticles(new CommittedSquareParticleOptions(length),
-                        target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ(),
-                        0, dx, dy, dz, 0);
-            }
+            level.sendParticles(LEParticles.COMMITTED.get(), target.getX(), target.getY() + target.getBbHeight() / 2.0 + 0.2, target.getZ(), (int)(10 + (-targetHealthPercent + 1) * 20), 0, 0.2 + (-targetHealthPercent + 1) * 0.3, 0, 0.3 + (-targetHealthPercent + 1) * 0.7);
         }
 
         return dmgBonus;
