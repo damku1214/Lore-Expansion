@@ -120,6 +120,11 @@ dependencies {
     runtimeOnly("curse.maven:immersive-messages-api-1109713:6480770")
     runtimeOnly("curse.maven:txnilib-1104882:6533725")
 
+    // Health bar
+    implementation("maven.modrinth:health-indicators:21.1.3")
+    implementation("maven.modrinth:architectury-api:13.0.11+neoforge")
+    implementation("maven.modrinth:yacl:3.8.2+1.21.1-neoforge")
+
     // Rolling
     implementation("maven.modrinth:combat-roll:2.0.6+1.21.1-neoforge")
     implementation("maven.modrinth:cloth-config:15.0.140+neoforge")
