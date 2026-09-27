@@ -2,7 +2,7 @@
   "enchantment.loreexpansion.ambush": "Ambush",
   "enchantment.loreexpansion.ambush.desc": "Attacks from behind and attacks on mobs that are not actively targeting you deal increased damage.",
   "enchantment.loreexpansion.anima_conduit": "Anima Conduit",
-  "enchantment.loreexpansion.anima conduit.desc": "Each soul you absorb grants a small amount of health.",
+  "enchantment.loreexpansion.anima_conduit.desc": "Each soul you absorb grants a small amount of health.",
   "enchantment.loreexpansion.busy_bee": "Busy Bee",
   "enchantment.loreexpansion.busy_bee.desc": "Grants a chance for a bee to spawn after defeating a mob, with up to 3 bees joining your side.",
   "enchantment.loreexpansion.chains": "Chains",
@@ -31,6 +31,7 @@
   "sounds.loreexpansion.crit": "Critical hit",
   "sounds.loreexpansion.leeching": "Leeching health",
   "sounds.loreexpansion.radiance": "Radiance",
+  "sounds.loreexpansion.soul_collect": "Collecting soul",
 
   "entity.loreexpansion.mark": "Mark",
   "entity.loreexpansion.pet_bee": "Bee (Pet)",

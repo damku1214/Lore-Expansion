@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.damku1214.loreexpansion.LoreExpansion;
 import net.damku1214.loreexpansion.entity.custom.SoulEntity;
+import net.damku1214.loreexpansion.particle.LEParticles;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -28,6 +29,7 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
     public void render(SoulEntity entity, float yaw, float partialTick,
                        @NotNull PoseStack pose, @NotNull MultiBufferSource buffers, int light) {
         if (!entity.isVisible()) return;
+        light = LEParticles.LIGHT;
 
         renderTrail(entity, partialTick, pose, buffers, light);
 
@@ -40,10 +42,10 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
         Matrix4f m = pose.last().pose();
 
         float u0 = 0f, u1 = 1f, v0 = 0f, v1 = 1f;
-        vc.addVertex(m, -0.5f,  0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u0,v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
-        vc.addVertex(m, -0.5f, -0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u0,v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
-        vc.addVertex(m,  0.5f, -0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u1,v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
-        vc.addVertex(m,  0.5f,  0.5f, 0f).setColor(1f,1f,1f,1f).setUv(u1,v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
+        vc.addVertex(m, -0.5f, 0.5f, 0f).setColor(1f, 1f, 1f, 1f).setUv(u0,v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
+        vc.addVertex(m, -0.5f, -0.5f, 0f).setColor(1f, 1f, 1f, 1f).setUv(u0,v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
+        vc.addVertex(m, 0.5f ,-0.5f, 0f).setColor(1f, 1f, 1f, 1f).setUv(u1,v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
+        vc.addVertex(m, 0.5f, 0.5f, 0f).setColor(1f, 1f, 1f, 1f).setUv(u1,v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);;
 
         pose.popPose();
         super.render(entity, yaw, partialTick, pose, buffers, light);
@@ -82,13 +84,12 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
             }
 
             // Fade and narrow toward tail
-            float tA = (float) i       / SoulEntity.TRAIL_LENGTH;
-            float tB = (float)(i + 1)  / SoulEntity.TRAIL_LENGTH;
+            float tA = (float) i / SoulEntity.TRAIL_LENGTH;
+            float tB = (float)(i + 1) / SoulEntity.TRAIL_LENGTH;
             float alphaA = (1f - tA) * 200; // 0-200 range for byte alpha
             float alphaB = (1f - tB) * 200;
-            // multiplier is width
-            float widthA = (1f - tA) * 0.35f;
-            float widthB = (1f - tB) * 0.35f;
+            float widthA = (1f - tA * (entity.getEntityData().get(SoulEntity.IS_SOUL_SIPHON) ? 0.25f : 1)) * 0.35f;
+            float widthB = (1f - tB * (entity.getEntityData().get(SoulEntity.IS_SOUL_SIPHON) ? 0.25f : 1)) * 0.35f;
 
             // Segment direction
             float dx = (float)(bx - ax);
@@ -128,11 +129,11 @@ public class SoulRenderer extends EntityRenderer<SoulEntity> {
             int aAlpha = (int) alphaA;
             int bAlpha = (int) alphaB;
 
-            // Blue tint: r=80, g=140, b=255
-            vc.addVertex(m, a1x, a1y, a1z).setColor(80, 140, 255, aAlpha).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
-            vc.addVertex(m, a2x, a2y, a2z).setColor(80, 140, 255, aAlpha).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
-            vc.addVertex(m, b2x, b2y, b2z).setColor(80, 140, 255, bAlpha).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
-            vc.addVertex(m, b1x, b1y, b1z).setColor(80, 140, 255, bAlpha).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
+            // Blue tint: r=63, g=153, b=219
+            vc.addVertex(m, a1x, a1y, a1z).setColor(63, 153, 219, aAlpha).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
+            vc.addVertex(m, a2x, a2y, a2z).setColor(63, 153, 219, aAlpha).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
+            vc.addVertex(m, b2x, b2y, b2z).setColor(63, 153, 219, bAlpha).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
+            vc.addVertex(m, b1x, b1y, b1z).setColor(63, 153, 219, bAlpha).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0, 1, 0);
         }
     }
 

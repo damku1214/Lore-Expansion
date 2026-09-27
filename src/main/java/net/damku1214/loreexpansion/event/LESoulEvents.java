@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
@@ -22,18 +23,20 @@ public class LESoulEvents {
     @SubscribeEvent
     public static void onMobKill(LivingDeathEvent event) {
         Entity attacker = event.getSource().getEntity();
-        if (!(attacker instanceof Player player) || player.level().isClientSide) return;
+        if (!(attacker instanceof Player player)) return;
 
         double gathering = player.getAttributeValue(LEAttributes.SOUL_GATHERING);
         if (gathering <= 0) return;
 
         LivingEntity dead = event.getEntity();
-        ServerLevel level = (ServerLevel) player.level();
+        Level level = player.level();
 
         spawnSoul(player, dead, level, false);
 
-        SoulData data = player.getData(LEAttachments.SOUL_DATA.get());
-        PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
+        if (!level.isClientSide) {
+            SoulData data = player.getData(LEAttachments.SOUL_DATA.get());
+            PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
+        }
     }
 
     @SubscribeEvent
@@ -43,11 +46,8 @@ public class LESoulEvents {
         PacketDistributor.sendToPlayer((ServerPlayer) player, new SyncSoulsPacket(data.getSouls()));
     }
 
-    public static void spawnSoul(Player player, LivingEntity dead, ServerLevel level, boolean isSoulSiphon) {
-        double ox = (Math.random() - 0.5) * (isSoulSiphon ? 2 : 0.8);
-        double oz = (Math.random() - 0.5) * (isSoulSiphon ? 2 : 0.8);
-
-        SoulEntity soul = new SoulEntity(player, dead.getX() + ox, dead.getY(), dead.getZ() + oz);
+    public static void spawnSoul(Player player, LivingEntity dead, Level level, boolean isSoulSiphon) {
+        SoulEntity soul = new SoulEntity(player, dead.getX(), dead.getY(), dead.getZ(), isSoulSiphon);
         level.addFreshEntity(soul);
     }
 }

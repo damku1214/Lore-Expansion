@@ -22,6 +22,7 @@ public class LESounds {
     public static final Supplier<SoundEvent> LEECHING = registerSoundEvent("leeching");
     public static final Supplier<SoundEvent> RADIANCE_0 = registerSoundEvent("radiance_0");
     public static final Supplier<SoundEvent> RADIANCE_1 = registerSoundEvent("radiance_1");
+    public static final Supplier<SoundEvent> SOUL_COLLECT = registerSoundEvent("soul_collect");
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(LoreExpansion.MOD_ID, name);

@@ -17,10 +17,13 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -288,7 +291,10 @@ public class LEEnchantEvents {
 
         if (event.getAmount() > 0 && enchantLevel > 0 && Math.random() < (isMelee ? 0.2 : 0.5)) {
             List<LivingEntity> nearbyEntities = level.getNearbyEntities(LivingEntity.class, TargetingConditions.forNonCombat(), target, new AABB(target.getX() + 3.75, target.getY() + target.getBbHeight() * 0.5 + 2, target.getZ() + 3.75, target.getX() - 3.75, target.getY() + target.getBbHeight() * 0.5 - 2, target.getZ() - 3.75));
-            nearbyEntities.forEach(m -> m.heal(1 + enchantLevel * 0.5f));
+            nearbyEntities.forEach(m -> {
+                boolean isTargetAPet = m instanceof OwnableEntity pet && pet.getOwnerUUID() == attacker.getUUID();
+                if (m.getUUID() == attacker.getUUID() || isTargetAPet) m.heal(1 + enchantLevel * 0.5f);
+            });
 
             level.sendParticles(LEParticles.RADIANCE_RING.get(), target.getX(), target.getY() + target.getBbHeight() * 0.5, target.getZ(), 1, 0, 0, 0, 0);
             level.sendParticles(LEParticles.RADIANCE_SQUARE.get(), target.getX(), target.getY() + 0.5, target.getZ(), 25, 0, 0, 0, 0.1);

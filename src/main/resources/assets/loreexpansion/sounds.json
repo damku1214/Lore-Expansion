@@ -64,5 +64,11 @@
     "sounds": [
       "loreexpansion:enchant/radiance/radiance_1"
     ]
+  },
+  "soul_collect": {
+    "subtitle": "sounds.loreexpansion.soul_collect",
+    "sounds": [
+      "loreexpansion:misc/soul_collect"
+    ]
   }
 }
