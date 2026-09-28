@@ -3,7 +3,9 @@
   "package": "net.damku1214.loreexpansion.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ChainedMovementRestrictionMixin"
+    "ChainedMovementRestrictionMixin",
+    "FireworksArrowAmmoMixin",
+    "FireworksArrowShootMixin"
   ],
   "client": [
     "PowerfulEnchantTooltipMixin"

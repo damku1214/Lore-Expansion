@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "loreexpansion:item/fireworks_arrow"
+  }
+}

@@ -41,11 +41,7 @@
   "attribute.loreexpansion.max_souls": "Max Souls",
   "attribute.loreexpansion.soul_gathering": "Soul Gathering",
 
-  "loreexpansion.configuration.title": "Lore Expansion Configs",
-  "loreexpansion.configuration.section.loreexpansion.common.toml": "Lore Expansion Configs",
-  "loreexpansion.configuration.section.loreexpansion.common.toml.title": "Lore Expansion Configs",
-  "loreexpansion.configuration.items": "Item List",
-  "loreexpansion.configuration.logDirtBlock": "Log Dirt Block",
-  "loreexpansion.configuration.magicNumberIntroduction": "Magic Number Text",
-  "loreexpansion.configuration.magicNumber": "Magic Number"
+  "creativetab.loreexpansion.artifacts": "Artifacts",
+
+  "item.loreexpansion.fireworks_arrow": "Fireworks Arrow"
 }

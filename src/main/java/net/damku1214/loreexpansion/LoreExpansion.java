@@ -4,6 +4,8 @@ import net.damku1214.loreexpansion.attachment.LEAttachments;
 import net.damku1214.loreexpansion.effect.LEEffects;
 import net.damku1214.loreexpansion.enchant.LEEnchantmentEffects;
 import net.damku1214.loreexpansion.entity.LEEntities;
+import net.damku1214.loreexpansion.item.LECreativeModeTabs;
+import net.damku1214.loreexpansion.item.LEItems;
 import net.damku1214.loreexpansion.network.SyncSoulsPacket;
 import net.damku1214.loreexpansion.particle.LEParticles;
 import net.damku1214.loreexpansion.sound.LESounds;
@@ -44,10 +46,10 @@ public class LoreExpansion {
         LEEffects.register(modEventBus);
         LEAttachments.register(modEventBus);
         LEAttributes.register(modEventBus);
+        LEItems.register(modEventBus);
+        LECreativeModeTabs.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
-
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {}

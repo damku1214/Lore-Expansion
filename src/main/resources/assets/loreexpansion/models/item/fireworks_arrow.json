@@ -1,0 +1,15 @@
+{
+  "parent": "minecraft:item/generated",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "loreexpansion:item/fireworks_arrow_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "loreexpansion:item/fireworks_arrow_2d"
+    },
+    "fixed": {
+      "parent": "loreexpansion:item/fireworks_arrow_2d"
+    }
+  }
+}
